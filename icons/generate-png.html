@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Icon Generator</title></head><body>
+<canvas id="c" width="128" height="128" style="border:1px solid #ccc"></canvas>
+<div id="out"></div>
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+
+function drawIcon(size) {
+  canvas.width = size;
+  canvas.height = size;
+  const s = size / 1024;
+
+  // 深蓝圆角背景
+  ctx.beginPath();
+  ctx.moveTo(200*s, 0);
+  ctx.lineTo((1024-200)*s, 0);
+  ctx.arcTo(1024*s, 0, 1024*s, 200*s, 200*s);
+  ctx.lineTo(1024*s, (1024-200)*s);
+  ctx.arcTo(1024*s, 1024*s, (1024-200)*s, 1024*s, 200*s);
+  ctx.lineTo(200*s, 1024*s);
+  ctx.arcTo(0, 1024*s, 0, (1024-200)*s, 200*s);
+  ctx.lineTo(0, 200*s);
+  ctx.arcTo(0, 0, 200*s, 0, 200*s);
+  ctx.closePath();
+  ctx.fillStyle = '#0a1f4d';
+  ctx.fill();
+
+  // 云朵 - 渐变
+  const grad1 = ctx.createLinearGradient(0.38*size, 0.2*size, 0.57*size, 0.6*size);
+  grad1.addColorStop(0, '#00bdff');
+  grad1.addColorStop(1, '#1851f4');
+
+  const grad2 = ctx.createLinearGradient(0.45*size, 0.17*size, 0.63*size, 0.57*size);
+  grad2.addColorStop(0, '#00bdff');
+  grad2.addColorStop(1, '#216ab4');
+
+  const ty = 128*s;
+
+  // Path 1 - 大云朵
+  ctx.fillStyle = grad1;
+  ctx.beginPath();
+  ctx.moveTo(675.8*s, 297.2*s+ty);
+  ctx.bezierCurveTo(549.4*s, 327.7*s+ty, 438.3*s, 534.6*s+ty, 328.7*s, 548.2*s+ty);
+  ctx.bezierCurveTo(197.8*s, 564.4*s+ty, 170.5*s, 396.2*s+ty, 279.3*s, 365.5*s+ty);
+  ctx.bezierCurveTo(349.9*s, 345.5*s+ty, 395.6*s, 394.9*s+ty, 442.9*s, 438*s+ty);
+  ctx.lineTo(486.5*s, 397*s+ty);
+  ctx.bezierCurveTo(442.7*s, 340.4*s+ty, 375.1*s, 292.1*s+ty, 300.7*s, 292.7*s+ty);
+  ctx.bezierCurveTo(133.6*s, 294.1*s+ty, 84.4*s, 538.7*s+ty, 246.2*s, 602.2*s+ty);
+  ctx.bezierCurveTo(413.5*s, 667.9*s+ty, 521.7*s, 467.6*s+ty, 636.5*s, 388*s+ty);
+  ctx.bezierCurveTo(735*s, 319.7*s+ty, 857.4*s, 406.5*s+ty, 797.6*s, 503.6*s+ty);
+  ctx.bezierCurveTo(746.4*s, 586.7*s+ty, 635.1*s, 541*s+ty, 584.2*s, 481.9*s+ty);
+  ctx.lineTo(580*s, 477.5*s+ty);
+  ctx.lineTo(535.7*s, 521.5*s+ty);
+  ctx.bezierCurveTo(613.2*s, 615.2*s+ty, 760.6*s, 660.5*s+ty, 845.6*s, 548.4*s+ty);
+  ctx.bezierCurveTo(936.4*s, 428.6*s+ty, 817.4*s, 263.2*s+ty, 675.8*s, 297.2*s+ty);
+  ctx.fill();
+
+  // Path 2 - 小云朵
+  ctx.fillStyle = grad2;
+  ctx.beginPath();
+  ctx.moveTo(510.8*s, 374.1*s+ty);
+  ctx.bezierCurveTo(557.7*s, 333.9*s+ty, 603.8*s, 278.6*s+ty, 683.7*s, 264.6*s+ty);
+  ctx.bezierCurveTo(694.9*s, 262.6*s+ty, 705.9*s, 260.2*s+ty, 716.9*s, 259.4*s+ty);
+  ctx.bezierCurveTo(675.4*s, 189.6*s+ty, 599.3*s, 137.3*s+ty, 512.2*s, 137.3*s+ty);
+  ctx.bezierCurveTo(421.8*s, 137.3*s+ty, 346.2*s, 186.9*s+ty, 304.7*s, 256.7*s+ty);
+  ctx.bezierCurveTo(399.8*s, 253.3*s+ty, 462.9*s, 319.2*s+ty, 510.7*s, 374*s+ty);
+  ctx.closePath();
+  ctx.fill();
+
+  return canvas.toDataURL('image/png');
+}
+
+// Generate all sizes
+const sizes = [16, 48, 128];
+sizes.forEach(sz => {
+  drawIcon(sz);
+  const link = document.createElement('a');
+  link.download = 'icon' + sz + '.png';
+  link.href = canvas.toDataURL('image/png');
+  link.textContent = 'Download icon' + sz + '.png';
+  document.getElementById('out').appendChild(link);
+  document.getElementById('out').appendChild(document.createElement('br'));
+});
+document.getElementById('out').appendChild(document.createTextNode('Right-click each link -> Save link as -> save to icons/ folder'));
+</script>
+</body></html>
