@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>网盘通 - 图标生成器</title>
+  <style>
+    body { font-family: 'Microsoft YaHei', sans-serif; max-width: 600px; margin: 40px auto; padding: 20px; }
+    button { padding: 12px 24px; font-size: 16px; cursor: pointer; background: #4f46e5; color: #fff; border: none; border-radius: 8px; margin: 5px; }
+    button:hover { background: #4338ca; }
+    .preview { display: flex; gap: 10px; margin: 20px 0; flex-wrap: wrap; }
+    .preview img { border: 1px solid #e5e7eb; border-radius: 8px; }
+    .note { background: #fef3c7; padding: 12px; border-radius: 8px; margin: 20px 0; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <h2>网盘通 - 图标生成器</h2>
+  <p>点击按钮生成并下载所需的所有 PNG 图标文件</p>
+  <div class="note">
+    请将生成的 PNG 文件保存到 <code>icons/</code> 目录下，替换对应的 SVG 文件。
+  </div>
+  <button onclick="generateAll()">一键生成所有图标</button>
+  <div class="preview" id="preview"></div>
+  <script>
+    const svg128 = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+      <defs><linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#4f46e5"/><stop offset="100%" style="stop-color:#7c3aed"/></linearGradient></defs>
+      <rect width="128" height="128" rx="28" fill="url(#bg)"/>
+      <ellipse cx="64" cy="46" rx="36" ry="12" fill="rgba(255,255,255,0.9)"/>
+      <path d="M28 46v20c0 6.6 16.1 12 36 12s36-5.4 36-12V46" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="5"/>
+      <path d="M28 57c0 6.6 16.1 12 36 12s36-5.4 36-12" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="4"/>
+      <circle cx="64" cy="68" r="8" fill="rgba(255,255,255,0.9)"/>
+      <rect x="62" y="76" width="4" height="14" rx="2" fill="rgba(255,255,255,0.9)"/>
+      <rect x="56" y="86" width="16" height="4" rx="2" fill="rgba(255,255,255,0.9)"/>
+    </svg>`;
+
+    function svgToPng(svg, size, callback) {
+      const canvas = document.createElement('canvas');
+      canvas.width = size;
+      canvas.height = size;
+      const ctx = canvas.getContext('2d');
+      const img = new Image();
+      const blob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      img.onload = () => {
+        ctx.drawImage(img, 0, 0, size, size);
+        URL.revokeObjectURL(url);
+        canvas.toBlob((blob) => {
+          callback(blob);
+        }, 'image/png');
+      };
+      img.src = url;
+    }
+
+    function download(blob, filename) {
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = filename;
+      a.click();
+      URL.revokeObjectURL(a.href);
+    }
+
+    function generateAll() {
+      const sizes = [16, 48, 128];
+      sizes.forEach(size => {
+        svgToPng(svg128, size, (blob) => {
+          download(blob, `icon${size}.png`);
+          const preview = document.getElementById('preview');
+          const img = document.createElement('img');
+          img.src = URL.createObjectURL(blob);
+          img.width = size;
+          img.height = size;
+          img.title = `icon${size}.png`;
+          preview.appendChild(img);
+        });
+      });
+      alert('图标已生成并下载！请将 icon16.png, icon48.png, icon128.png 放入 icons/ 目录。');
+    }
+  </script>
+</body>
+</html>

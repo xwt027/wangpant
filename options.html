@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>网盘通 - 设置</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <!-- 侧边栏 -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#4f46e5" stroke-width="2">
+            <ellipse cx="12" cy="5" rx="9" ry="3"/>
+            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+          </svg>
+        </div>
+        <h1>网盘通</h1>
+      </div>
+      <nav class="nav-menu">
+        <a class="nav-item active" data-section="profile">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+          <span>个人资料</span>
+        </a>
+        <a class="nav-item" data-section="accounts">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="8.5" cy="7" r="4"/>
+            <line x1="20" y1="8" x2="20" y2="14"/>
+            <line x1="23" y1="11" x2="17" y2="11"/>
+          </svg>
+          <span>账号管理</span>
+        </a>
+        <a class="nav-item" data-section="memo">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <polyline points="10 9 9 9 8 9"/>
+          </svg>
+          <span>备忘录</span>
+        </a>
+        <a class="nav-item" data-section="sessions">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+          <span>登录设备</span>
+        </a>
+        <a class="nav-item" data-section="settings">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+          <span>插件设置</span>
+        </a>
+        <a class="nav-item" data-section="sync">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="23 4 23 10 17 10"/>
+            <polyline points="1 20 1 14 7 14"/>
+            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+          </svg>
+          <span>数据同步</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <span class="version">网盘通 v1.0.0</span>
+      </div>
+    </aside>
+
+    <!-- 主内容区 -->
+    <main class="main-content">
+      <!-- 个人资料 -->
+      <section class="section active" id="section-profile">
+        <h2>个人资料</h2>
+        <p class="section-desc">注册账号，设置头像、昵称和主密码。邮箱将用于数据加密和跨设备同步</p>
+
+        <div class="form-group">
+          <label>头像</label>
+          <div class="avatar-upload">
+            <div class="avatar-preview" id="avatarPreview">
+              <img id="avatarPreviewImg" src="icons/avatar-default.svg" alt="头像">
+              <div class="avatar-overlay">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                  <circle cx="12" cy="13" r="4"/>
+                </svg>
+              </div>
+            </div>
+            <div class="avatar-actions">
+              <button class="btn btn-outline" id="uploadAvatarBtn">上传图片</button>
+              <button class="btn btn-text" id="removeAvatarBtn">移除</button>
+              <input type="file" id="avatarFileInput" accept="image/*" style="display:none;">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="nicknameInput">昵称</label>
+          <input type="text" id="nicknameInput" placeholder="请输入昵称" maxlength="20">
+        </div>
+
+        <!-- 邮箱注册区域 -->
+        <div class="form-group">
+          <label for="emailInput">邮箱</label>
+          <div class="input-row">
+            <input type="email" id="emailInput" placeholder="请输入邮箱地址（用于注册和登录）" class="flex-input">
+            <button class="btn btn-outline btn-sm" id="sendCodeBtn" style="white-space:nowrap;">发送验证码</button>
+          </div>
+          <span class="hint" id="emailStatus">邮箱验证通过后将作为登录凭证，用于加密数据</span>
+        </div>
+
+        <div class="form-group" id="verifyCodeGroup" style="display:none;">
+          <label for="verifyCodeInput">验证码</label>
+          <div class="input-row">
+            <input type="text" id="verifyCodeInput" placeholder="请输入6位验证码" maxlength="6" class="flex-input">
+            <button class="btn btn-primary btn-sm" id="verifyCodeBtn" style="white-space:nowrap;">验证</button>
+          </div>
+          <span class="hint">验证码已发送至您的邮箱（有效时间10分钟，开发模式下通过浏览器通知显示）</span>
+        </div>
+
+        <div class="form-group">
+          <label for="masterPasswordInput">主密码</label>
+          <input type="password" id="masterPasswordInput" placeholder="设置主密码（用于加密网盘账号密码）" autocomplete="new-password">
+          <span class="hint">主密码 + 邮箱共同加密您的网盘账号密码，请务必牢记</span>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPasswordInput">确认主密码</label>
+          <input type="password" id="confirmPasswordInput" placeholder="再次输入主密码" autocomplete="new-password">
+        </div>
+
+        <div class="form-actions">
+          <button class="btn btn-primary" id="saveProfileBtn">保存资料</button>
+          <span class="save-status" id="profileSaveStatus"></span>
+        </div>
+      </section>
+
+      <!-- 账号管理 -->
+      <section class="section" id="section-accounts">
+        <div class="section-header">
+          <div>
+            <h2>账号管理</h2>
+            <p class="section-desc">添加和管理各家网盘的登录账号，支持同一网盘多个账号（最多20个）</p>
+          </div>
+          <span class="account-limit" id="accountLimit">0/20</span>
+        </div>
+
+        <div class="account-list" id="accountList">
+          <div class="empty-accounts" id="emptyAccounts">
+            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.3">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="8.5" cy="7" r="4"/>
+              <line x1="20" y1="8" x2="20" y2="14"/>
+              <line x1="23" y1="11" x2="17" y2="11"/>
+            </svg>
+            <p>还没有添加任何网盘账号</p>
+            <button class="btn btn-primary" id="addAccountBtn">+ 添加账号</button>
+          </div>
+        </div>
+        <div class="add-account-bottom" id="addAccountBottom" style="display:none;">
+          <button class="btn btn-outline" id="addAccountBtnBottom">+ 添加账号</button>
+          <span class="account-limit-hint" id="accountLimitHint"></span>
+        </div>
+      </section>
+
+      <!-- 备忘录 -->
+      <section class="section" id="section-memo">
+        <div class="section-header">
+          <div>
+            <h2>备忘录</h2>
+            <p class="section-desc">简易备注功能，最多2000字符，自动同步到所有已登录设备</p>
+          </div>
+          <div class="memo-actions">
+            <span class="memo-count" id="memoCharCount">0 / 2000</span>
+            <button class="btn btn-outline btn-sm" id="clearMemoBtn">清空</button>
+          </div>
+        </div>
+        <textarea id="memoTextarea" placeholder="在此输入备注内容，最多2000个字符。内容将自动同步到所有已登录的设备..." maxlength="2000"></textarea>
+        <div class="memo-footer">
+          <span class="memo-sync-status" id="memoSyncStatus">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="23 4 23 10 17 10"/>
+              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10"/>
+            </svg>
+            已自动同步
+          </span>
+          <button class="btn btn-primary btn-sm" id="saveMemoBtn">保存</button>
+        </div>
+      </section>
+
+      <!-- 登录设备 -->
+      <section class="section" id="section-sessions">
+        <div class="section-header">
+          <div>
+            <h2>登录设备</h2>
+            <p class="section-desc">查看已登录插件的设备列表，最多允许5个设备同时登录</p>
+          </div>
+          <div class="sessions-actions">
+            <span class="sessions-count" id="sessionsCount">0/5</span>
+            <button class="btn btn-outline btn-sm" id="refreshSessionsBtn">刷新</button>
+          </div>
+        </div>
+        <div class="sessions-list" id="sessionsList">
+          <div class="loading-sessions" id="loadingSessions">
+            <div class="spinner-sm"></div>
+            <span>加载中...</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 插件设置 -->
+      <section class="section" id="section-settings">
+        <h2>插件设置</h2>
+        <p class="section-desc">调整插件的登录行为和偏好设置</p>
+
+        <div class="settings-group">
+          <div class="setting-item">
+            <div class="setting-info">
+              <div class="setting-title">自动填充登录表单</div>
+              <div class="setting-desc">打开网盘登录页时自动填充账号密码</div>
+            </div>
+            <label class="toggle">
+              <input type="checkbox" id="autoFillToggle" checked>
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <div class="setting-title">自动提交登录</div>
+              <div class="setting-desc">填充表单后自动提交（建议关闭，以便处理验证码/扫码）</div>
+            </div>
+            <label class="toggle">
+              <input type="checkbox" id="autoSubmitToggle">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <div class="setting-title">在新标签页打开</div>
+              <div class="setting-desc">点击网盘时在新标签页中打开登录页面</div>
+            </div>
+            <label class="toggle">
+              <input type="checkbox" id="newTabToggle" checked>
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn btn-primary" id="saveSettingsBtn">保存设置</button>
+          <span class="save-status" id="settingsSaveStatus"></span>
+        </div>
+      </section>
+
+      <!-- 数据同步 -->
+      <section class="section" id="section-sync">
+        <h2>数据同步</h2>
+        <p class="section-desc">管理您的数据同步状态，云端同步确保跨设备数据一致</p>
+
+        <div class="sync-card">
+          <div class="sync-status-badge" id="syncStatusBadge">
+            <div class="sync-dot"></div>
+            <span id="syncStatusText">检查中...</span>
+          </div>
+          <div class="sync-info">
+            <div class="sync-row">
+              <span>上次同步时间</span>
+              <span id="lastSyncTime">-</span>
+            </div>
+            <div class="sync-row">
+              <span>已绑定账号数</span>
+              <span id="syncAccountCount">0</span>
+            </div>
+            <div class="sync-row">
+              <span>同步方式</span>
+              <span>Chrome 账号同步</span>
+            </div>
+            <div class="sync-row">
+              <span>密码版本</span>
+              <span id="passwordVersion">-</span>
+            </div>
+          </div>
+          <button class="btn btn-outline" id="manualSyncBtn">立即同步</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- 头像裁剪弹窗 -->
+  <div class="modal-overlay" id="cropModal" style="display:none;">
+    <div class="modal crop-modal">
+      <div class="modal-header">
+        <h3>裁剪头像</h3>
+        <button class="modal-close" id="cropModalClose">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body crop-body">
+        <div class="crop-container" id="cropContainer">
+          <img id="cropImage" style="display:none;">
+          <div class="crop-mask"></div>
+          <div class="crop-frame" id="cropFrame"></div>
+          <div class="crop-handle" id="cropHandle"></div>
+        </div>
+        <div class="crop-controls">
+          <input type="range" id="cropZoom" min="0.5" max="3" step="0.01" value="1" title="缩放">
+          <span class="crop-zoom-label">缩放</span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" id="cropCancel">取消</button>
+        <button class="btn btn-primary" id="cropConfirm">确认裁剪</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 添加/编辑账号弹窗 -->
+  <div class="modal-overlay" id="accountModal" style="display:none;">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modalTitle">添加网盘账号</h3>
+        <button class="modal-close" id="modalClose">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="driveSelect">选择网盘</label>
+          <select id="driveSelect">
+            <option value="">请选择网盘</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="accountNickname">备注名称</label>
+          <input type="text" id="accountNickname" placeholder="如：工作账号、个人账号" maxlength="20">
+          <span class="hint">用于区分同一网盘的多个账号</span>
+        </div>
+        <div class="form-group">
+          <label for="accountUsername">登录账号</label>
+          <input type="text" id="accountUsername" placeholder="请输入手机号/邮箱/用户名">
+        </div>
+        <div class="form-group">
+          <label for="accountPassword">登录密码</label>
+          <input type="password" id="accountPassword" placeholder="请输入网盘登录密码" autocomplete="new-password">
+        </div>
+        <div class="form-group">
+          <label for="modalMasterPassword">主密码</label>
+          <input type="password" id="modalMasterPassword" placeholder="请输入您的主密码以加密存储" autocomplete="new-password">
+          <span class="hint">需要主密码来加密保存您的网盘密码</span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" id="modalCancel">取消</button>
+        <button class="btn btn-primary" id="modalSave">保存</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="drives-config.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>
